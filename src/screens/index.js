@@ -22,13 +22,16 @@ class AppScreen extends PureComponent {
 
   shouldSearchBarBeShown = () => {
     if (!this.state.name && !this.state.gender) {
-      return false;
-      //return true;
+      //return false;
+      return true;
     } else {
       return false;
     }
   };
 
+  /**
+   * Refactor this so that you can reuse this only to fetch data
+   */
   fetchFeedbacks = (name, gender) => {
     const params = {
       name,
@@ -38,9 +41,12 @@ class AppScreen extends PureComponent {
     axios
       .get(Urls.FEEDBACK, { params })
       .then(response => {
-        this.updateState(() => ({ isLoading: false }));
         const { data } = response;
         this.masterList = data;
+        this.updateState(() => ({
+          isLoading: false,
+          selectedFeedback: this.selectFeedback(this.state.selectedCategories)
+        }));
       })
       .catch(console.error);
   };
@@ -59,7 +65,6 @@ class AppScreen extends PureComponent {
       feedbackMap[selectedCategory.value] = feedbackObject;
     });
 
-    console.log(feedbackMap);
     const response = Object.keys(feedbackMap).reduce((accum, current) => {
       const feedbacks = this.masterList[current];
       const feedbackObject = feedbackMap[current];
@@ -105,6 +110,9 @@ class AppScreen extends PureComponent {
             loading={this.state.isLoading}
             selectedFeedback={this.state.selectedFeedback}
             name={this.state.name}
+            gender={this.state.gender}
+            fetchFeedbacks={this.fetchFeedbacks}
+            updateState={this.updateState}
           />
         )}
       </div>

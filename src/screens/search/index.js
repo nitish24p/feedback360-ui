@@ -45,7 +45,9 @@ class SearchScreen extends PureComponent {
                 <option value="male">Male</option>
                 <option value="female">Female</option>
               </Select>
-              <Button type="submit">Submit</Button>
+              <Button squared type="submit">
+                Submit
+              </Button>
             </FormContainer>
           </div>
         </FlexCenteredContainer>

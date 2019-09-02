@@ -26,12 +26,22 @@ class Feedback extends PureComponent {
     );
   };
 
+  getMoreFeedback = () => {
+    const { name, gender } = this.props;
+    this.props.updateState(() => ({
+      isLoading: true
+    }));
+    this.props.fetchFeedbacks(name, gender);
+  };
+
   renderHeaderContent = () => {
     if (this.props.loading) {
       return (
         <div>
           <div className={styles.headerTextWrapper}>
-            <Heading>Hey {this.props.name}, preparing your feedback</Heading>
+            <Heading margin="0px">
+              Hey {this.props.name}, preparing your feedback
+            </Heading>
           </div>
           <Loader fixbottom />
         </div>
@@ -40,9 +50,16 @@ class Feedback extends PureComponent {
       return (
         <div>
           <div className={styles.headerTextWrapper}>
-            <Heading>
+            <Heading margin="0px">
               Done!!, your feedback is below <span role="img">😂</span>
             </Heading>
+            <Button
+              fontSize="16px"
+              size="regular"
+              onClick={this.getMoreFeedback}
+            >
+              Get More Feedback
+            </Button>
           </div>
         </div>
       );
@@ -120,7 +137,6 @@ class Feedback extends PureComponent {
   };
 
   render() {
-    console.log('logging props', this.props);
     return (
       <ParentContainer>
         {this.renderHeader()}
