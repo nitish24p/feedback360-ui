@@ -1,0 +1,50 @@
+.headerWrapper {
+  height: 130px;
+  background: #151f2b;
+  position:relative
+}
+
+.headerTextWrapper {
+  padding: 20px;
+  padding-bottom: 0px
+}
+
+.tagContainer {
+  margin-top: -40px;
+  position:relative;
+}
+
+.tagContainer .list {
+  list-style: none;
+  padding:0px;
+  margin-bottom: 0px;
+}
+
+.tagContainer .list li {
+  margin: 5px 3px;
+  display: inline-block;
+  padding: 10px 24px;
+  background: #fff;
+  color: white;
+  border-radius: 400px;
+  cursor: pointer;
+  border: solid 2px #00ad9e;
+  color: #00ad9e;
+  font-size: 16px;
+}
+
+.listActive {
+  color: #fff !important;
+  border: solid 2px #00ad9e !important;
+  background: #00ad9e !important;
+}
+
+.feedbackContainer {
+  color: #151f2b
+}
+
+.feedbackContainer .list {
+  line-height: 25px;
+  padding-left: 20px;
+  color: #151f2b;
+}
