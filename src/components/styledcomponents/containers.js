@@ -19,6 +19,9 @@ export const FlexCenteredContainer = styled.div`
   justify-content: center;
   align-items: center;
   height: 100vh;
+  @media (max-width: 460px) {
+    align-items: baseline;
+  }
 `;
 
 export const FormContainer = styled.form`
@@ -27,6 +30,10 @@ export const FormContainer = styled.form`
   align-items: center;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.06);
   border: 1px solid #eaeaea;
+  @media (max-width: 460px) {
+    flex-direction: column;
+    align-items: stretch;
+  }
 `;
 
 export const Loader = styled.div`
